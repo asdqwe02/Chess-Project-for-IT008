@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +14,7 @@ namespace ChessForm
 {
     public partial class Form1 : Form
     {
-        bool attacksAvailable = false;
+        bool attacksAvailable= false;
         int Player0MovesCount, Player1MovesCount, PlayerXMadelastMoved = 0;
         ChessBoard chessboard = new ChessBoard();
         Chess.Point selectedPiece = new Chess.Point();
@@ -22,6 +22,33 @@ namespace ChessForm
         public Form1()
         {
             InitializeComponent();
+        }
+        //PlXMLM is PlayerXMadeLastMoved    condition for checkmate if (Player1MovesCount>1&&Player0MovesCount>1)
+        public bool CheckMate(int PlXMLM,ChessBoard Board) 
+        {
+            int tempCount = 0;
+            for (int x = 0; x < Board.GetLength(0); x++)
+            {
+                for (int y = 0; y < Board.GetLength(1); y++)
+                {
+                    if (Board[x,y]!=null)
+                    switch (PlXMLM)
+                    {
+                            case 0:
+                                if (Board.PieceActions(x, y).Count() == 0 && Board[x, y].Player == 1)
+                                    tempCount++;    
+                                break;
+                            default:
+                                if (Board.PieceActions(x, y).Count() == 0 && Board[x, y].Player == 0)
+                                    tempCount++;
+                                break;
+                    }
+                }
+            }
+            if (tempCount != 0)
+                return true;
+            return false;
+
         }
         public void CountPlayerMoved()
         {
@@ -43,6 +70,7 @@ namespace ChessForm
             {
                 for (int y = 0; y < Board.GetLength(1); y++)
                 {
+                   
                     Button butt = (Button)tableLayoutPanel1.GetControlFromPosition(x, y);
                     butt.FlatStyle = FlatStyle.Flat;
                     if ((x + y) % 2 == 1)
@@ -97,6 +125,13 @@ namespace ChessForm
 
                 }
             }
+            if (Player0MovesCount > 1 && Player0MovesCount > 1)
+                if (CheckMate(PlayerXMadelastMoved, chessboard))
+                {
+                    MessageBox.Show($"Check Mate Player {Math.Abs(PlayerXMadelastMoved - 1)}", "CHECK MATE!!!");
+                    this.Close();
+                }
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -210,9 +245,12 @@ namespace ChessForm
                 {
                     Button actionButton = (Button)tableLayoutPanel1.GetControlFromPosition(point.x, point.y);
                     if (actionButton.Tag is ChessPiece)
+                    { 
                         attacksAvailable = true;
+                        actionButton.BackColor = Color.Red;
+                    }
+                    else actionButton.BackColor = Color.Chartreuse; 
                     actionButton.FlatStyle = FlatStyle.Standard;
-                    actionButton.BackColor = Color.LightGreen;
                     Console.WriteLine("({0}, {1})", point.x, point.y);
                 }
                 Console.WriteLine();
