@@ -31,23 +31,30 @@ namespace ChessForm
             {
                 for (int y = 0; y < Board.GetLength(1); y++)
                 {
-                    if (Board[x,y]!=null)
-                    switch (PlXMLM)
+                    if (Board[x, y] != null)
                     {
+                        switch (PlXMLM)
+                        {
                             case 0:
-                                if (Board.PieceActions(x, y).Count() == 0 && Board[x, y].Player == 1)
-                                    tempCount++;    
-                                break;
-                            default:
-                                if (Board.PieceActions(x, y).Count() == 0 && Board[x, y].Player == 0)
+                                if (Board.PieceActions(x, y).Count() != 0 && Board[x, y].Player == 1)
                                     tempCount++;
                                 break;
+                            case 1:
+                                if (Board.PieceActions(x, y).Count() != 0 && Board[x, y].Player == 0)
+                                    tempCount++;
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
             }
-            if (tempCount != 0)
+            if (tempCount == 0)
                 return true;
-            return false;
+            else {
+                Console.WriteLine("player {0} can have {1} pieces allow to move",Math.Abs(PlayerXMadelastMoved-1),tempCount);
+                return false;
+            }
 
         }
         public void CountPlayerMoved()
