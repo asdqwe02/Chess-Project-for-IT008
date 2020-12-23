@@ -191,7 +191,10 @@ namespace ChessForm
                     }
                 }
             }
-
+            if (count == 0)
+            {
+                return;
+            }
             AI_Moves[] Bob = new AI_Moves[count];
 
             //Generate move for Bob (Bob is kinda dumb just like his programmer). Bob will prioritize the first piece that can attack and move it 
