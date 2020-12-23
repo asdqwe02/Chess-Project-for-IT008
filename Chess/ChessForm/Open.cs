@@ -45,7 +45,8 @@ namespace ChessForm
 
         private void AIbutton_Click(object sender, EventArgs e)
         {
-
+            Form StartedWithAI = new FormWithAI();
+            StartedWithAI.ShowDialog();
         }
 
         private void LANbutton_Click(object sender, EventArgs e)
