@@ -87,6 +87,7 @@ namespace Chess
                     }
                 }
             }
+            return true;
             throw new Exception("King wasn't found!");
         }
         private void AddMove(List<Point> availableActions, Point fromPoint, Point toPoint, bool ignoreCheck = false)
