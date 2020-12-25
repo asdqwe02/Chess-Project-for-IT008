@@ -73,6 +73,16 @@ namespace ChessForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chess_wide {
+            get {
+                object obj = ResourceManager.GetObject("chess-wide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap d6aa82bf6c37530d7521fd3f4164d516 {
             get {
                 object obj = ResourceManager.GetObject("d6aa82bf6c37530d7521fd3f4164d516", resourceCulture);
@@ -86,6 +96,56 @@ namespace ChessForm.Properties {
         internal static System.Drawing.Bitmap db238be9_b433_4904_9555_fe342bc795de_200x200 {
             get {
                 object obj = ResourceManager.GetObject("db238be9-b433-4904-9555-fe342bc795de_200x200", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap depositphotos_85080098_stock_illustration_chess_pieces {
+            get {
+                object obj = ResourceManager.GetObject("depositphotos_85080098-stock-illustration-chess-pieces", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_flat {
+            get {
+                object obj = ResourceManager.GetObject("play-flat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wALLPAPER {
+            get {
+                object obj = ResourceManager.GetObject("wALLPAPER", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wallpapertip_3d_chess_wallpaper_2447720 {
+            get {
+                object obj = ResourceManager.GetObject("wallpapertip_3d-chess-wallpaper_2447720", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wp5313510 {
+            get {
+                object obj = ResourceManager.GetObject("wp5313510", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
