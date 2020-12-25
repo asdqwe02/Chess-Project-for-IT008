@@ -23,9 +23,9 @@ namespace ChessForm
 
         struct AI_Moves
         {
-            public int attack;
             public Chess.Point AI_pos;
             public Chess.Point[] AI_Moves_p;
+            public List<Chess.Point> AI_Moves_pa;
         }
 
         public FormWithAI()
@@ -178,6 +178,7 @@ namespace ChessForm
         private void AIMoves(ChessBoard Board)
         {
             // AI might not need to use attacksAvailable flag bc it doesn't need to click
+            int second_Attack_Check = 0;
             int count = 0;
             int index = 0;
             selectedPlayer = 0;
@@ -196,7 +197,7 @@ namespace ChessForm
                 return;
             }
             AI_Moves[] Bob = new AI_Moves[count];
-
+            List<AI_Moves> Aggressive_Bob = new List<AI_Moves>();
             //Generate move for Bob (Bob is kinda dumb just like his programmer). Bob will prioritize the first piece that can attack and move it 
             //If there are no piece that can attack Bob will choose a random piece and move it randomly as long as it can move
             for (int x = 0; x < Board.GetLength(0); x++)
@@ -209,23 +210,26 @@ namespace ChessForm
                         int countTemp = 0;
                         Bob[index].AI_Moves_p = new Chess.Point[Board.PieceActions(x, y).Count()];
                         Bob[index].AI_pos = new Chess.Point(x, y); // index is out of range error need to be fix 
-                        
-
+                        AI_Moves Temp_Bob = new AI_Moves();
+                        Temp_Bob.AI_pos = new Chess.Point(x, y);
+                        Temp_Bob.AI_Moves_pa = new List<Chess.Point>();
                         foreach (Chess.Point point in chessboard.PieceActions(x, y))
                         {
-                            Bob[index].attack = 0;
                             Button actionButton = (Button)tableLayoutPanel1.GetControlFromPosition(point.x, point.y);
                             if (actionButton.Tag is ChessPiece)
                             {
-                                Bob[index].attack = 1;
-                                chessboard.ActionPiece(x, y, point.x, point.y);
-                                CountPlayerMoved();
-                                DrawPiece(chessboard);
-                                selectedPlayer = -1;
-                                return;
+                                second_Attack_Check = 1;
+                                attacksAvailable = true;
+                                Chess.Point pa_Temp = new Chess.Point(point.x, point.y);
+                                Temp_Bob.AI_Moves_pa.Add(pa_Temp);
                             }
                             Bob[index].AI_Moves_p[countTemp] = point;
                             countTemp++;
+                        }
+                        if (second_Attack_Check!=0)
+                        { 
+                            Aggressive_Bob.Add(Temp_Bob);
+                            second_Attack_Check = 0;
                         }
                         index++;
                     }
@@ -233,10 +237,21 @@ namespace ChessForm
             }
             int Piece_Bob_Will_Move = rnd.Next(count);
             int Piece_Moves_Bob_Will_Choose = rnd.Next(Bob[Piece_Bob_Will_Move].AI_Moves_p.Count());
-            chessboard.ActionPiece(Bob[Piece_Bob_Will_Move].AI_pos, Bob[Piece_Bob_Will_Move].AI_Moves_p[Piece_Moves_Bob_Will_Choose]);
+            if (attacksAvailable)
+            {
+                int Piece_Aggressive_Bob_Will_Move = rnd.Next(Aggressive_Bob.Count());
+                int Piece_Moves_Aggressive_Bob_Will_Choose = rnd.Next(Aggressive_Bob[Piece_Aggressive_Bob_Will_Move].AI_Moves_pa.Count());
+
+                Console.WriteLine("ABob Pieces that can Attack: {0}",Aggressive_Bob.Count());
+                Console.WriteLine(Aggressive_Bob[Piece_Aggressive_Bob_Will_Move].AI_Moves_pa.Count());
+               
+                chessboard.ActionPiece(Aggressive_Bob[Piece_Aggressive_Bob_Will_Move].AI_pos, Aggressive_Bob[Piece_Aggressive_Bob_Will_Move].AI_Moves_pa[Piece_Moves_Aggressive_Bob_Will_Choose]);
+            }
+            else chessboard.ActionPiece(Bob[Piece_Bob_Will_Move].AI_pos, Bob[Piece_Bob_Will_Move].AI_Moves_p[Piece_Moves_Bob_Will_Choose]);
             CountPlayerMoved();
             DrawPiece(chessboard);
             selectedPlayer = -1;
+            attacksAvailable = false;
         }
         //Event Handler for button click
         private void Board_Click(object sender, EventArgs e)
