@@ -13,11 +13,13 @@ namespace ChessForm
 {
     public partial class Open : Form
     {
+        System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Opening.wav");
+        
         public Open()
         {
             Thread t = new Thread(new ThreadStart(Loadingform));
             t.Start();
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             InitializeComponent();
             t.Abort();
         }
@@ -25,34 +27,42 @@ namespace ChessForm
         {
             Application.Run(new LoadingScreenForm());
         }
-        private void ABbutton_Click(object sender, EventArgs e)
+        private void QuitButton_Click(object sender, EventArgs e)
         {
-            Form about = new AboutForm();
-            about.ShowDialog();
+            DialogResult dlg = MessageBox.Show("You want to exit?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dlg == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
-        private void OTbutton_Click(object sender, EventArgs e)
+        private void PracticeButton_Click(object sender, EventArgs e)
         {
-            Form options = new OptionForm();
-            options.ShowDialog();
+            player.Stop();
+            Form2 f2 = new Form2();
+            f2.ShowDialog();
         }
 
-        private void PRbutton_Click(object sender, EventArgs e)
+        private void MultiButton_Click(object sender, EventArgs e)
         {
-            Form Started = new Form2();
-            Started.ShowDialog();
+            player.Stop();
+            Form1 f1 = new Form1();
+            f1.ShowDialog();
         }
 
-        private void AIbutton_Click(object sender, EventArgs e)
+        private void SingleButton_Click(object sender, EventArgs e)
         {
-            Form StartedWithAI = new FormWithAI();
-            StartedWithAI.ShowDialog();
+            player.Stop();
+            FormWithAI ai = new FormWithAI();
+            ai.ShowDialog();
         }
 
-        private void LANbutton_Click(object sender, EventArgs e)
+        private void AboutButton_Click(object sender, EventArgs e)
         {
-            Form Started = new Form1();
-            Started.ShowDialog();
+            AboutForm ab = new AboutForm();
+            ab.ShowDialog();
         }
+
+        
     }
 }

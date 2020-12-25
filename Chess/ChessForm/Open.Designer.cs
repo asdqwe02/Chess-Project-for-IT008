@@ -29,97 +29,177 @@ namespace ChessForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.AIbutton = new System.Windows.Forms.Button();
-            this.LANbutton = new System.Windows.Forms.Button();
-            this.PRbutton = new System.Windows.Forms.Button();
-            this.OTbutton = new System.Windows.Forms.Button();
-            this.ABbutton = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Open));
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Menuu = new System.Windows.Forms.GroupBox();
+            this.QuitButton = new System.Windows.Forms.Button();
+            this.AboutButton = new System.Windows.Forms.Button();
+            this.PracticeButton = new System.Windows.Forms.Button();
+            this.MultiButton = new System.Windows.Forms.Button();
+            this.SingleButton = new System.Windows.Forms.Button();
+            this.Menuu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // AIbutton
+            // label1
             // 
-            this.AIbutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AIbutton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AIbutton.Location = new System.Drawing.Point(64, 49);
-            this.AIbutton.Name = "AIbutton";
-            this.AIbutton.Size = new System.Drawing.Size(199, 47);
-            this.AIbutton.TabIndex = 0;
-            this.AIbutton.Text = "Single Player";
-            this.AIbutton.UseVisualStyleBackColor = true;
-            this.AIbutton.Click += new System.EventHandler(this.AIbutton_Click);
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Niagara Engraved", 150F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Location = new System.Drawing.Point(84, 100);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(488, 268);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "CHESS";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // LANbutton
+            // label2
             // 
-            this.LANbutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LANbutton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LANbutton.Location = new System.Drawing.Point(64, 168);
-            this.LANbutton.Name = "LANbutton";
-            this.LANbutton.Size = new System.Drawing.Size(199, 47);
-            this.LANbutton.TabIndex = 1;
-            this.LANbutton.Text = "MultiPlayer / LAN";
-            this.LANbutton.UseVisualStyleBackColor = true;
-            this.LANbutton.Click += new System.EventHandler(this.LANbutton_Click);
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Pristina", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.label2.Location = new System.Drawing.Point(125, 353);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(356, 79);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Assert YourSelf";
             // 
-            // PRbutton
+            // label3
             // 
-            this.PRbutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PRbutton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PRbutton.Location = new System.Drawing.Point(64, 285);
-            this.PRbutton.Name = "PRbutton";
-            this.PRbutton.Size = new System.Drawing.Size(199, 47);
-            this.PRbutton.TabIndex = 2;
-            this.PRbutton.Text = "Practice";
-            this.PRbutton.UseVisualStyleBackColor = true;
-            this.PRbutton.Click += new System.EventHandler(this.PRbutton_Click);
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Pristina", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.label3.Location = new System.Drawing.Point(-13, 424);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(653, 79);
+            this.label3.TabIndex = 2;
+            this.label3.Text = " --    By Your Intelligence    --";
             // 
-            // OTbutton
+            // Menuu
             // 
-            this.OTbutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.OTbutton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OTbutton.Location = new System.Drawing.Point(64, 395);
-            this.OTbutton.Name = "OTbutton";
-            this.OTbutton.Size = new System.Drawing.Size(199, 47);
-            this.OTbutton.TabIndex = 3;
-            this.OTbutton.Text = "Option";
-            this.OTbutton.UseVisualStyleBackColor = true;
-            this.OTbutton.Click += new System.EventHandler(this.OTbutton_Click);
+            this.Menuu.BackColor = System.Drawing.Color.Transparent;
+            this.Menuu.Controls.Add(this.QuitButton);
+            this.Menuu.Controls.Add(this.AboutButton);
+            this.Menuu.Controls.Add(this.PracticeButton);
+            this.Menuu.Controls.Add(this.MultiButton);
+            this.Menuu.Controls.Add(this.SingleButton);
+            this.Menuu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Menuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Menuu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Menuu.Location = new System.Drawing.Point(764, 28);
+            this.Menuu.Name = "Menuu";
+            this.Menuu.Size = new System.Drawing.Size(446, 533);
+            this.Menuu.TabIndex = 3;
+            this.Menuu.TabStop = false;
+            this.Menuu.Text = "Menu";
             // 
-            // ABbutton
+            // QuitButton
             // 
-            this.ABbutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ABbutton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ABbutton.Location = new System.Drawing.Point(64, 514);
-            this.ABbutton.Name = "ABbutton";
-            this.ABbutton.Size = new System.Drawing.Size(199, 47);
-            this.ABbutton.TabIndex = 4;
-            this.ABbutton.Text = "About";
-            this.ABbutton.UseVisualStyleBackColor = true;
-            this.ABbutton.Click += new System.EventHandler(this.ABbutton_Click);
+            this.QuitButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.QuitButton.Font = new System.Drawing.Font("Papyrus", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QuitButton.ForeColor = System.Drawing.Color.White;
+            this.QuitButton.Location = new System.Drawing.Point(20, 415);
+            this.QuitButton.Name = "QuitButton";
+            this.QuitButton.Size = new System.Drawing.Size(219, 80);
+            this.QuitButton.TabIndex = 4;
+            this.QuitButton.Text = "Quit";
+            this.QuitButton.UseVisualStyleBackColor = false;
+            this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
+            // 
+            // AboutButton
+            // 
+            this.AboutButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.AboutButton.Font = new System.Drawing.Font("Papyrus", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutButton.ForeColor = System.Drawing.Color.White;
+            this.AboutButton.Location = new System.Drawing.Point(210, 329);
+            this.AboutButton.Name = "AboutButton";
+            this.AboutButton.Size = new System.Drawing.Size(219, 80);
+            this.AboutButton.TabIndex = 3;
+            this.AboutButton.Text = "About";
+            this.AboutButton.UseVisualStyleBackColor = false;
+            this.AboutButton.Click += new System.EventHandler(this.AboutButton_Click);
+            // 
+            // PracticeButton
+            // 
+            this.PracticeButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.PracticeButton.Font = new System.Drawing.Font("Papyrus", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PracticeButton.ForeColor = System.Drawing.Color.White;
+            this.PracticeButton.Location = new System.Drawing.Point(20, 243);
+            this.PracticeButton.Name = "PracticeButton";
+            this.PracticeButton.Size = new System.Drawing.Size(219, 80);
+            this.PracticeButton.TabIndex = 2;
+            this.PracticeButton.Text = "Practice";
+            this.PracticeButton.UseVisualStyleBackColor = false;
+            this.PracticeButton.Click += new System.EventHandler(this.PracticeButton_Click);
+            // 
+            // MultiButton
+            // 
+            this.MultiButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.MultiButton.Font = new System.Drawing.Font("Papyrus", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MultiButton.ForeColor = System.Drawing.Color.White;
+            this.MultiButton.Location = new System.Drawing.Point(210, 157);
+            this.MultiButton.Name = "MultiButton";
+            this.MultiButton.Size = new System.Drawing.Size(219, 80);
+            this.MultiButton.TabIndex = 1;
+            this.MultiButton.Text = "MultiPlayer";
+            this.MultiButton.UseVisualStyleBackColor = false;
+            this.MultiButton.Click += new System.EventHandler(this.MultiButton_Click);
+            // 
+            // SingleButton
+            // 
+            this.SingleButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.SingleButton.Font = new System.Drawing.Font("Papyrus", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SingleButton.ForeColor = System.Drawing.Color.White;
+            this.SingleButton.Location = new System.Drawing.Point(20, 71);
+            this.SingleButton.Name = "SingleButton";
+            this.SingleButton.Size = new System.Drawing.Size(219, 80);
+            this.SingleButton.TabIndex = 0;
+            this.SingleButton.Text = "SinglePlayer";
+            this.SingleButton.UseVisualStyleBackColor = false;
+            this.SingleButton.Click += new System.EventHandler(this.SingleButton_Click);
             // 
             // Open
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 64F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ChessForm.Properties.Resources.d6aa82bf6c37530d7521fd3f4164d516;
+            this.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.BackgroundImage = global::ChessForm.Properties.Resources.chess_wide;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(984, 616);
-            this.Controls.Add(this.ABbutton);
-            this.Controls.Add(this.OTbutton);
-            this.Controls.Add(this.PRbutton);
-            this.Controls.Add(this.LANbutton);
-            this.Controls.Add(this.AIbutton);
+            this.ClientSize = new System.Drawing.Size(1222, 584);
+            this.Controls.Add(this.Menuu);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Niagara Engraved", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 12, 6, 12);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1240, 631);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1240, 631);
             this.Name = "Open";
-            this.Text = "Chess-Game";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ChessGame";
+            this.Menuu.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button AIbutton;
-        private System.Windows.Forms.Button LANbutton;
-        private System.Windows.Forms.Button PRbutton;
-        private System.Windows.Forms.Button OTbutton;
-        private System.Windows.Forms.Button ABbutton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox Menuu;
+        private System.Windows.Forms.Button QuitButton;
+        private System.Windows.Forms.Button AboutButton;
+        private System.Windows.Forms.Button PracticeButton;
+        private System.Windows.Forms.Button MultiButton;
+        private System.Windows.Forms.Button SingleButton;
     }
 }

@@ -82,12 +82,6 @@
     <Compile Include="Open.Designer.cs">
       <DependentUpon>Open.cs</DependentUpon>
     </Compile>
-    <Compile Include="OptionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OptionForm.Designer.cs">
-      <DependentUpon>OptionForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutForm.resx">
@@ -108,9 +102,6 @@
     <EmbeddedResource Include="Open.resx">
       <DependentUpon>Open.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OptionForm.resx">
-      <DependentUpon>OptionForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -119,6 +110,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -138,6 +130,24 @@
       <Project>{71140a63-f633-4046-939e-59cd74a74a1c}</Project>
       <Name>Chess</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wALLPAPER.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\depositphotos_85080098-stock-illustration-chess-pieces.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chess-wide.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wallpapertip_3d-chess-wallpaper_2447720.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wp5313510.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play-flat.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

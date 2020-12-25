@@ -44,6 +44,7 @@ namespace ChessForm
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -62,7 +63,7 @@ namespace ChessForm
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(421, 342);
+            this.groupBox1.Location = new System.Drawing.Point(386, 342);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(609, 189);
             this.groupBox1.TabIndex = 1;
@@ -77,7 +78,7 @@ namespace ChessForm
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 23);
             this.label10.TabIndex = 8;
-            this.label10.Text = "19522436";
+            this.label10.Text = "19522075";
             // 
             // label9
             // 
@@ -87,7 +88,7 @@ namespace ChessForm
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 23);
             this.label9.TabIndex = 7;
-            this.label9.Text = "19522436";
+            this.label9.Text = "19522429";
             // 
             // label8
             // 
@@ -97,7 +98,7 @@ namespace ChessForm
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 23);
             this.label8.TabIndex = 6;
-            this.label8.Text = "19522436";
+            this.label8.Text = "19522262";
             // 
             // label7
             // 
@@ -162,10 +163,11 @@ namespace ChessForm
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Red;
-            this.groupBox2.Location = new System.Drawing.Point(282, 239);
+            this.groupBox2.Location = new System.Drawing.Point(217, 239);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(658, 97);
             this.groupBox2.TabIndex = 2;
@@ -176,7 +178,7 @@ namespace ChessForm
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(196, 31);
+            this.label1.Location = new System.Drawing.Point(174, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(279, 35);
             this.label1.TabIndex = 0;
@@ -187,20 +189,21 @@ namespace ChessForm
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label11.Location = new System.Drawing.Point(12, 175);
+            this.label11.Location = new System.Drawing.Point(239, 158);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(1121, 37);
+            this.label11.Size = new System.Drawing.Size(614, 37);
             this.label11.TabIndex = 3;
-            this.label11.Text = "ĐỒ ÁN MÔN LẬP TRÌNH TRỰC QUAN - XÂY DỰNG TRÒ CHƠI CỜ VUA";
+            this.label11.Text = "ĐỒ ÁN MÔN LẬP TRÌNH TRỰC QUAN ";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label11.UseMnemonic = false;
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Black;
             this.pictureBox2.Image = global::ChessForm.Properties.Resources.db238be9_b433_4904_9555_fe342bc795de_200x200;
-            this.pictureBox2.Location = new System.Drawing.Point(162, 342);
+            this.pictureBox2.Location = new System.Drawing.Point(98, 342);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(253, 189);
+            this.pictureBox2.Size = new System.Drawing.Size(282, 189);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
@@ -210,19 +213,32 @@ namespace ChessForm
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Image = global::ChessForm.Properties.Resources.banner;
-            this.pictureBox1.Location = new System.Drawing.Point(-5, -4);
+            this.pictureBox1.Location = new System.Drawing.Point(1, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1194, 144);
+            this.pictureBox1.Size = new System.Drawing.Size(1090, 144);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label12.Location = new System.Drawing.Point(276, 195);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(541, 37);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "- XÂY DỰNG TRÒ CHƠI CỜ VUA -";
             // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1190, 557);
+            this.ClientSize = new System.Drawing.Size(1092, 557);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.groupBox2);
@@ -260,5 +276,6 @@ namespace ChessForm
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label12;
     }
 }
