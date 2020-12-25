@@ -146,8 +146,12 @@ namespace ChessForm
             if (Player0MovesCount > 1 && Player0MovesCount > 1)
                 if (CheckMate(PlayerXMadelastMoved, chessboard))
                 {
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Eat.wav");
+                    player.Play();
                     MessageBox.Show($"Check Mate Player {Math.Abs(PlayerXMadelastMoved - 1)}", "CHECK MATE!!!");
                     this.Close();
+                    System.Media.SoundPlayer player1 = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Opening.wav");
+                    player1.Play();
                 }
             if (PlayerXMadelastMoved == 1)
                 AIMoves(Board);
@@ -175,6 +179,18 @@ namespace ChessForm
             }
             DrawPiece(chessboard);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult dlg = MessageBox.Show("Are you want to surrender ?", "Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == DialogResult.Yes)
+            {
+                this.Close();
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Opening.wav");
+                player.PlayLooping();
+            }
+        }
+
         private void AIMoves(ChessBoard Board)
         {
             // AI might not need to use attacksAvailable flag bc it doesn't need to click
@@ -186,7 +202,7 @@ namespace ChessForm
             {
                 for (int y = 0; y < Board.GetLength(1); y++)
                 {
-                    if (Board[x, y] != null && Board[x, y].Player != 1 && Board.PieceActions(x,y).Count()!=0)
+                    if (Board[x, y] != null && Board[x, y].Player != 1 && Board.PieceActions(x, y).Count() != 0)
                     {
                         count++;
                     }
@@ -226,8 +242,8 @@ namespace ChessForm
                             Bob[index].AI_Moves_p[countTemp] = point;
                             countTemp++;
                         }
-                        if (second_Attack_Check!=0)
-                        { 
+                        if (second_Attack_Check != 0)
+                        {
                             Aggressive_Bob.Add(Temp_Bob);
                             second_Attack_Check = 0;
                         }
@@ -242,9 +258,9 @@ namespace ChessForm
                 int Piece_Aggressive_Bob_Will_Move = rnd.Next(Aggressive_Bob.Count());
                 int Piece_Moves_Aggressive_Bob_Will_Choose = rnd.Next(Aggressive_Bob[Piece_Aggressive_Bob_Will_Move].AI_Moves_pa.Count());
 
-                Console.WriteLine("ABob Pieces that can Attack: {0}",Aggressive_Bob.Count());
+                Console.WriteLine("ABob Pieces that can Attack: {0}", Aggressive_Bob.Count());
                 Console.WriteLine(Aggressive_Bob[Piece_Aggressive_Bob_Will_Move].AI_Moves_pa.Count());
-               
+
                 chessboard.ActionPiece(Aggressive_Bob[Piece_Aggressive_Bob_Will_Move].AI_pos, Aggressive_Bob[Piece_Aggressive_Bob_Will_Move].AI_Moves_pa[Piece_Moves_Aggressive_Bob_Will_Choose]);
             }
             else chessboard.ActionPiece(Bob[Piece_Bob_Will_Move].AI_pos, Bob[Piece_Bob_Will_Move].AI_Moves_p[Piece_Moves_Bob_Will_Choose]);
@@ -271,6 +287,8 @@ namespace ChessForm
                     playerMoved = chessboard.ActionPiece(selectedPiece.x, selectedPiece.y, pos.Column, pos.Row);
                     if (playerMoved)
                     {
+                        System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Move.wav");
+                        player.Play();
                         CountPlayerMoved();
                     }
                     selectedPlayer = -1;
