@@ -71,13 +71,39 @@ namespace ChessForm
             Console.WriteLine("last moved was made by player {0}", PlayerXMadelastMoved);
 
         }
+        private static void PawnPromotion(ChessBoard board, int x, int y)
+        {
+            Form ppf = new Pawn_Promotion();
+            ppf.ShowDialog();
+            int TPlayer = board[x, y].Player;
+            string PieceTyoe = Chess.ChessBoard.PP;
+            board.Pawn_Promotion(x, y, PieceTyoe);
+            board[x, y].Player = TPlayer;
+
+        }
         public void DrawPiece(ChessBoard Board)
         {
             for (int x = 0; x < Board.GetLength(0); x++)
             {
                 for (int y = 0; y < Board.GetLength(1); y++)
                 {
-                   
+                    //pawn Promotion
+                    if (Board[x, y] != null && Board[x, y].GetType().ToString() == "Chess.Pawn")
+                    {
+                        switch (Board[x, y].Player)
+                        {
+                            case 0:
+                                if (y == 7)
+                                    PawnPromotion(chessboard, x, y);
+                                break;
+                            case 1:
+                                if (y == 0)
+                                    PawnPromotion(chessboard, x, y);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
                     Button butt = (Button)tableLayoutPanel1.GetControlFromPosition(x, y);
                     butt.FlatStyle = FlatStyle.Flat;
                     if ((x + y) % 2 == 1)

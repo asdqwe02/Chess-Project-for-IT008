@@ -10,6 +10,7 @@ namespace Chess
         private ChessPiece[,] Board;
         private const int Columns = 8;
         private const int Rows = 8;
+        public static string PP = ""; // pawn promotion
         public ChessBoard()
         {
             setupBoard();
@@ -21,6 +22,10 @@ namespace Chess
         public ChessPiece this[int x, int y]
         {
             get { return Board[x, y]; }
+        }
+        public void Pawn_Promotion(int x,int y,string PieceType)
+        {
+            Board[x, y] = (ChessPiece)Activator.CreateInstance(Type.GetType("Chess." + PieceType));
         }
         private ChessBoard setupBoard()
         {
@@ -88,7 +93,7 @@ namespace Chess
                 }
             }
             return true;
-            throw new Exception("King wasn't found!");
+            //throw new Exception("King wasn't found!");
         }
         private void AddMove(List<Point> availableActions, Point fromPoint, Point toPoint, bool ignoreCheck = false)
         {
