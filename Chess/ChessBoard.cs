@@ -10,6 +10,7 @@ namespace Chess
         private ChessPiece[,] Board;
         private const int Columns = 8;
         private const int Rows = 8;
+        public static string PP = ""; // pawn promotion
         public ChessBoard()
         {
             setupBoard();
@@ -21,6 +22,10 @@ namespace Chess
         public ChessPiece this[int x, int y]
         {
             get { return Board[x, y]; }
+        }
+        public void Pawn_Promotion(int x,int y,string PieceType)
+        {
+            Board[x, y] = (ChessPiece)Activator.CreateInstance(Type.GetType("Chess." + PieceType));
         }
         private ChessBoard setupBoard()
         {
@@ -88,7 +93,7 @@ namespace Chess
                 }
             }
             return true;
-            throw new Exception("King wasn't found!");
+            //throw new Exception("King wasn't found!");
         }
         private void AddMove(List<Point> availableActions, Point fromPoint, Point toPoint, bool ignoreCheck = false)
         {
@@ -102,8 +107,8 @@ namespace Chess
                 kingInCheck = KingInCheck(movingPiece.Player);
                 Board = BoardBackup;
             }
-            if (ignoreCheck || !kingInCheck) 
-                availableActions.Add(toPoint);
+
+            if (ignoreCheck || !kingInCheck) availableActions.Add(toPoint);
         }
         public IEnumerable<Point> PieceActions(int x, int y, bool ignoreCheck = false, bool attackActions = true, bool moveActions = true, ChessPiece[,] board = null)
         {
@@ -258,16 +263,6 @@ namespace Chess
 
                     if (!bypassValidaiton) // Pawns can't double jump after they move.
                         pawn.CanDoubleJump = false;
-
-                    //Pawn upgrade
-                    //if (to.x==0||to.x==7)
-                    //    switch (Board[from.x,from.y].Player)
-                    //    {
-                    //        case 0:
-
-                    //        default:
-                    //            break;
-                    //    }
                 }
                 if (movingPiece is CastlePiece)
                 {
