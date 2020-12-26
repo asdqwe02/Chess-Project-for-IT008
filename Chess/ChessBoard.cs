@@ -102,8 +102,8 @@ namespace Chess
                 kingInCheck = KingInCheck(movingPiece.Player);
                 Board = BoardBackup;
             }
-
-            if (ignoreCheck || !kingInCheck) availableActions.Add(toPoint);
+            if (ignoreCheck || !kingInCheck) 
+                availableActions.Add(toPoint);
         }
         public IEnumerable<Point> PieceActions(int x, int y, bool ignoreCheck = false, bool attackActions = true, bool moveActions = true, ChessPiece[,] board = null)
         {
@@ -258,6 +258,16 @@ namespace Chess
 
                     if (!bypassValidaiton) // Pawns can't double jump after they move.
                         pawn.CanDoubleJump = false;
+
+                    //Pawn upgrade
+                    //if (to.x==0||to.x==7)
+                    //    switch (Board[from.x,from.y].Player)
+                    //    {
+                    //        case 0:
+
+                    //        default:
+                    //            break;
+                    //    }
                 }
                 if (movingPiece is CastlePiece)
                 {
