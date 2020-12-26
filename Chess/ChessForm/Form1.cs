@@ -135,27 +135,11 @@ namespace ChessForm
             if (Player0MovesCount > 1 && Player0MovesCount > 1)
                 if (CheckMate(PlayerXMadelastMoved, chessboard))
                 {
-                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Eat.wav");
-                    player.Play();
                     MessageBox.Show($"Check Mate Player {Math.Abs(PlayerXMadelastMoved - 1)}", "CHECK MATE!!!");
                     this.Close();
-                    System.Media.SoundPlayer player1 = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Opening.wav");
-                    player1.PlayLooping();
                 }
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DialogResult dlg = MessageBox.Show("Are you want to surrender ?","Sure?",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if(dlg == DialogResult.Yes)
-            {
-                this.Close();
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Opening.wav");
-                player.PlayLooping();
-            }
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             for (int x = 0; x < tableLayoutPanel1.ColumnCount; x++)
@@ -196,8 +180,6 @@ namespace ChessForm
                     playerMoved =chessboard.ActionPiece(selectedPiece.x, selectedPiece.y, pos.Column , pos.Row );
                     if (playerMoved)
                     {
-                        System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Move.wav");
-                        player.Play();
                         CountPlayerMoved();
                     }
                     selectedPlayer = -1;
@@ -214,7 +196,7 @@ namespace ChessForm
                 switch (chessPiece.Player)
                 {
                     case 1:
-                        if (attacksAvailable)
+                        if (attacksAvailable )
                             break;
                         if (!attacksAvailable && PlayerXMadelastMoved == 1)
                         { 
@@ -283,6 +265,5 @@ namespace ChessForm
             Console.WriteLine($"\battack available: {attacksAvailable}");
 
         }
-        
     }
 }

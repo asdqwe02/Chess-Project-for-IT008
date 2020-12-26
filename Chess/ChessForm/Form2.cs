@@ -139,15 +139,7 @@ namespace ChessForm
                 {
                     MessageBox.Show($"Check Mate Player {Math.Abs(PlayerXMadelastMoved - 1)}", "CHECK MATE!!!");
                     this.Close();
-                    System.Media.SoundPlayer player1 = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Opening.wav");
-                    player1.PlayLooping();
                 }
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
 
         }
 
@@ -191,8 +183,6 @@ namespace ChessForm
                     playerMoved = chessboard.ActionPiece(selectedPiece.x, selectedPiece.y, pos.Column, pos.Row);
                     if (playerMoved)
                     {
-                        System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Move.wav");
-                        player.Play();
                         CountPlayerMoved();
                     }
                     selectedPlayer = -1;
@@ -252,8 +242,6 @@ namespace ChessForm
                 playerMoved = chessboard.ActionPiece(selectedPiece.x, selectedPiece.y, pos.Column, pos.Row);
                 if (playerMoved)
                 {
-                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Move.wav");
-                    player.Play();
                     CountPlayerMoved();
                     attacksAvailable = false;
                 }
