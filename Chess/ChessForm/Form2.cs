@@ -19,6 +19,7 @@ namespace ChessForm
         ChessBoard chessboard = new ChessBoard();
         Chess.Point selectedPiece = new Chess.Point();
         int selectedPlayer = -1;
+        
         public Form2()
         {
             InitializeComponent();
@@ -79,7 +80,23 @@ namespace ChessForm
             {
                 for (int y = 0; y < Board.GetLength(1); y++)
                 {
-
+                    //pawn Promotion
+                    if (Board[x, y] != null && Board[x, y].GetType().ToString() == "Chess.Pawn")
+                    {
+                            switch (Board[x,y].Player)
+                            {
+                                case 0:
+                                if (y == 7)
+                                    PawnPromotion(chessboard, x, y);
+                                    break;
+                                case 1:
+                                    if (y == 0)
+                                        PawnPromotion(chessboard, x, y);
+                                    break;
+                                default:
+                                    break;
+                            }
+                    }
                     Button butt = (Button)tableLayoutPanel1.GetControlFromPosition(x, y);
                     butt.FlatStyle = FlatStyle.Flat;
                     if ((x + y) % 2 == 1)
@@ -134,12 +151,30 @@ namespace ChessForm
 
                 }
             }
-            if (Player0MovesCount > 1 && Player0MovesCount > 1)
+            if (Player0MovesCount >= 0 && Player0MovesCount >= 0)
                 if (CheckMate(PlayerXMadelastMoved, chessboard))
                 {
                     MessageBox.Show($"Check Mate Player {Math.Abs(PlayerXMadelastMoved - 1)}", "CHECK MATE!!!");
                     this.Close();
+                    System.Media.SoundPlayer player1 = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Opening.wav");
+                    player1.PlayLooping();
                 }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+        private static void PawnPromotion(ChessBoard board,int x,int y)
+        {
+            Form ppf = new Pawn_Promotion();
+            ppf.ShowDialog();
+            int TPlayer=board[x, y].Player;
+            string PieceTyoe = Chess.ChessBoard.PP;
+            board.Pawn_Promotion(x, y, PieceTyoe);
+            board[x, y].Player = TPlayer;
 
         }
 
@@ -175,15 +210,23 @@ namespace ChessForm
             if (!(sender is Button)) return;
             butt.FlatStyle = FlatStyle.Standard;
             TableLayoutPanelCellPosition pos = tableLayoutPanel1.GetPositionFromControl((Control)sender);
+            ChessPiece chessPiece = (ChessPiece)butt.Tag;
+            //move without attack
             if (!(butt.Tag is ChessPiece))
             {
                 attacksAvailable = false;
                 if (selectedPlayer > -1)
                 {
+                    
                     playerMoved = chessboard.ActionPiece(selectedPiece.x, selectedPiece.y, pos.Column, pos.Row);
                     if (playerMoved)
                     {
+                        System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Move.wav");
+                        player.Play();
                         CountPlayerMoved();
+                        //Pawn Promote
+        
+                        
                     }
                     selectedPlayer = -1;
                     DrawPiece(chessboard);
@@ -191,7 +234,7 @@ namespace ChessForm
                 Console.WriteLine($"attack available: {attacksAvailable}");
                 return;
             }
-            ChessPiece chessPiece = (ChessPiece)butt.Tag;
+            
             Console.WriteLine("({2}, {3}) - {0} from player {1}", chessPiece.GetType(), chessPiece.Player, pos.Column, pos.Row);
 
 
@@ -239,11 +282,15 @@ namespace ChessForm
 
             if (selectedPlayer > -1 && selectedPlayer != chessPiece.Player)
             {
+                
                 playerMoved = chessboard.ActionPiece(selectedPiece.x, selectedPiece.y, pos.Column, pos.Row);
                 if (playerMoved)
                 {
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Move.wav");
+                    player.Play();
                     CountPlayerMoved();
                     attacksAvailable = false;
+                   
                 }
                 selectedPlayer = -1;
                 DrawPiece(chessboard);
