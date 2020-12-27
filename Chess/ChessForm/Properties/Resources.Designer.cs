@@ -73,6 +73,26 @@ namespace ChessForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bishop_Black_60x60 {
+            get {
+                object obj = ResourceManager.GetObject("Bishop Black 60x60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Bishop_White_60x60 {
+            get {
+                object obj = ResourceManager.GetObject("Bishop White 60x60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap chess_wide {
             get {
                 object obj = ResourceManager.GetObject("chess-wide", resourceCulture);
@@ -113,9 +133,119 @@ namespace ChessForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ikoni_scrollup {
+            get {
+                object obj = ResourceManager.GetObject("ikoni-scrollup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ikoni_scrollup1 {
+            get {
+                object obj = ResourceManager.GetObject("ikoni-scrollup1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ikoni_scrollup2 {
+            get {
+                object obj = ResourceManager.GetObject("ikoni-scrollup2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Knight_Black_60x60 {
+            get {
+                object obj = ResourceManager.GetObject("Knight Black 60x60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Knight_White_60x60 {
+            get {
+                object obj = ResourceManager.GetObject("Knight White 60x60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap play_flat {
             get {
                 object obj = ResourceManager.GetObject("play-flat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngfind_com_rules_png_420867 {
+            get {
+                object obj = ResourceManager.GetObject("pngfind.com-rules-png-420867", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Queen_Black_60x60 {
+            get {
+                object obj = ResourceManager.GetObject("Queen Black 60x60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Queen_White_60x60 {
+            get {
+                object obj = ResourceManager.GetObject("Queen White 60x60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rook_Black_60x60 {
+            get {
+                object obj = ResourceManager.GetObject("Rook Black 60x60", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rook_Black_60x601 {
+            get {
+                object obj = ResourceManager.GetObject("Rook Black 60x601", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rook_White_60x60 {
+            get {
+                object obj = ResourceManager.GetObject("Rook White 60x60", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +276,26 @@ namespace ChessForm.Properties {
         internal static System.Drawing.Bitmap wp5313510 {
             get {
                 object obj = ResourceManager.GetObject("wp5313510", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap YourTurn_1 {
+            get {
+                object obj = ResourceManager.GetObject("YourTurn-1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Youtube_Transparent {
+            get {
+                object obj = ResourceManager.GetObject("Youtube-Transparent", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

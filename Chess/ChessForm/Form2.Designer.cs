@@ -50,6 +50,7 @@
             this.PiecesImageList = new System.Windows.Forms.ImageList(this.components);
             this.coordinates = new System.Windows.Forms.ToolTip(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.NewButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label16
@@ -272,7 +273,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
             this.tableLayoutPanel1.Location = new System.Drawing.Point(60, 46);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 81F));
@@ -308,13 +309,30 @@
             this.button1.BackColor = System.Drawing.Color.Black;
             this.button1.Font = new System.Drawing.Font("Agency FB", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(917, 333);
+            this.button1.Location = new System.Drawing.Point(917, 415);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(183, 70);
             this.button1.TabIndex = 35;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseLeave += new System.EventHandler(this.NewButton_MouseLeave);
+            this.button1.MouseHover += new System.EventHandler(this.NewButton_MouseHover);
+            // 
+            // NewButton
+            // 
+            this.NewButton.BackColor = System.Drawing.Color.Black;
+            this.NewButton.Font = new System.Drawing.Font("Agency FB", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.NewButton.Location = new System.Drawing.Point(917, 203);
+            this.NewButton.Name = "NewButton";
+            this.NewButton.Size = new System.Drawing.Size(183, 70);
+            this.NewButton.TabIndex = 36;
+            this.NewButton.Text = "New";
+            this.NewButton.UseVisualStyleBackColor = false;
+            this.NewButton.Click += new System.EventHandler(this.NewButton_Click);
+            this.NewButton.MouseLeave += new System.EventHandler(this.NewButton_MouseLeave);
+            this.NewButton.MouseHover += new System.EventHandler(this.NewButton_MouseHover);
             // 
             // Form2
             // 
@@ -323,6 +341,8 @@
             this.BackgroundImage = global::ChessForm.Properties.Resources.wp5313510;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1216, 709);
+            this.ControlBox = false;
+            this.Controls.Add(this.NewButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
@@ -341,7 +361,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1234, 756);
             this.MinimumSize = new System.Drawing.Size(1234, 756);
             this.Name = "Form2";
@@ -375,5 +395,6 @@
         private System.Windows.Forms.ImageList PiecesImageList;
         private System.Windows.Forms.ToolTip coordinates;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button NewButton;
     }
 }

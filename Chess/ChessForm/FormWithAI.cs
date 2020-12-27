@@ -99,7 +99,7 @@ namespace ChessForm
                 for (int y = 0; y < Board.GetLength(1); y++)
                 {
                     //pawn Promotion
-                    if (Board[x, y] != null && Board[x, y].GetType().ToString() == "Chess.Pawn" && PlayerXMadelastMoved!=1)
+                    if (Board[x, y] != null && Board[x, y].GetType().ToString() == "Chess.Pawn" && PlayerXMadelastMoved != 1)
                     {
                         switch (Board[x, y].Player)
                         {
@@ -172,12 +172,12 @@ namespace ChessForm
             if (Player0MovesCount > 1 && Player0MovesCount > 1)
                 if (CheckMate(PlayerXMadelastMoved, chessboard))
                 {
-                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Eat.wav");
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Eat.wav");
                     player.Play();
                     MessageBox.Show($"Check Mate Player {Math.Abs(PlayerXMadelastMoved - 1)}", "CHECK MATE!!!");
                     this.Close();
                     System.Media.SoundPlayer player1 = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Opening.wav");
-                    player1.Play();
+                    player1.PlayLooping();
                 }
             if (PlayerXMadelastMoved == 1)
                 AIMoves(Board);
@@ -212,7 +212,8 @@ namespace ChessForm
             if (dlg == DialogResult.Yes)
             {
                 this.Close();
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Opening.wav");
+                MessageBox.Show("Bob Win!");
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Opening.wav");
                 player.PlayLooping();
             }
         }
@@ -401,6 +402,70 @@ namespace ChessForm
             }
             Console.WriteLine($"\battack available: {attacksAvailable}");
 
+        }
+
+        private void NewButton_MouseHover(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            b.BackColor = Color.White;
+            b.ForeColor = Color.Black;
+        }
+
+        private void NewButton_MouseLeave(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            b.BackColor = Color.Black;
+            b.ForeColor = Color.White;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimeS.Text = Convert.ToString(Convert.ToInt32(TimeS.Text) + 1);
+            if(TimeS.Text == "60")
+            {
+                TimeS.Text = "00";
+                TimeM.Text = Convert.ToString(Convert.ToInt32(TimeM.Text) + 1);
+                if(TimeM.Text == "60")
+                {
+                    MessageBox.Show("End of 1 hour!", "Notification", MessageBoxButtons.OK);
+                }
+            }
+        }
+        private void NewButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dlg = MessageBox.Show("Are you really want to start a New Game?", "Warning", MessageBoxButtons.YesNo);
+            if (dlg == DialogResult.Yes)
+            {
+                this.DoubleBuffered = true;
+                this.Controls.Clear();
+                timer1.Dispose();
+                attacksAvailable = false;
+                Player0MovesCount = 0; Player1MovesCount = 0; PlayerXMadelastMoved = 0;
+                chessboard = new ChessBoard();
+                selectedPiece = new Chess.Point();
+                selectedPlayer = -1;
+                this.InitializeComponent();
+                for (int x = 0; x < tableLayoutPanel1.ColumnCount; x++)
+                {
+                    for (int y = 0; y < tableLayoutPanel1.RowCount; y++)
+                    {
+                        Button butt = new Button();
+                        butt.Dock = DockStyle.Fill;
+                        butt.Margin = new Padding(0);
+                        butt.FlatStyle = FlatStyle.Flat;
+                        butt.Dock = DockStyle.Fill;
+                        butt.FlatAppearance.BorderSize = 0;
+                        if ((x + y) % 2 == 1)
+                            butt.BackColor = Color.Black;
+                        else butt.BackColor = Color.White;
+                        tableLayoutPanel1.Controls.Add(butt);
+                        butt.Click += Board_Click;
+                    }
+                }
+                
+                DrawPiece(chessboard);
+                
+            }
         }
     }
  }

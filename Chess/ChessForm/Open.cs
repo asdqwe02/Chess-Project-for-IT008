@@ -14,9 +14,9 @@ namespace ChessForm
     public partial class Open : Form
     {
         System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Opening.wav");
-        
         public Open()
         {
+            player.PlayLooping();
             Thread t = new Thread(new ThreadStart(Loadingform));
             t.Start();
             Thread.Sleep(3000);
@@ -63,6 +63,46 @@ namespace ChessForm
             ab.ShowDialog();
         }
 
-        
+        private void SingleButton_MouseHover(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            b.BackColor = Color.White;
+            b.ForeColor = Color.Black;
+        }
+
+        private void SingleButton_MouseLeave(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            b.BackColor = Color.Black;
+            b.ForeColor = Color.White;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            label1.ForeColor = Color.FromArgb(rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255));
+            label2.ForeColor = label3.ForeColor = Color.FromArgb(rnd.Next(0, 255), rnd.Next(0, 255), rnd.Next(0, 255));
+           
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=Nqqc2FHf9Ug");
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.vietnamchess.vn/index.php/vi/databank/lawofchess/1920-lawofchess2018");
+        }
+
+        private void pictureBox2_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox2.BackColor = Color.White;
+        }
+
+        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox2.BackColor = Color.Transparent;
+        }
     }
 }

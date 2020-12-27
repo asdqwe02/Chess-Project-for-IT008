@@ -14,7 +14,8 @@ namespace ChessForm
 {
     public partial class Form1 : Form
     {
-        bool attacksAvailable= false;
+        int dem;
+        bool attacksAvailable = false;
         int Player0MovesCount, Player1MovesCount, PlayerXMadelastMoved = 0;
         ChessBoard chessboard = new ChessBoard();
         Chess.Point selectedPiece = new Chess.Point();
@@ -24,7 +25,7 @@ namespace ChessForm
             InitializeComponent();
         }
         //PlXMLM is PlayerXMadeLastMoved    condition for checkmate if (Player1MovesCount>1&&Player0MovesCount>1)
-        public bool CheckMate(int PlXMLM,ChessBoard Board) 
+        public bool CheckMate(int PlXMLM, ChessBoard Board)
         {
             int tempCount = 0;
             for (int x = 0; x < Board.GetLength(0); x++)
@@ -51,8 +52,9 @@ namespace ChessForm
             }
             if (tempCount == 0)
                 return true;
-            else {
-                Console.WriteLine("player {0} can have {1} pieces allow to move",Math.Abs(PlayerXMadelastMoved-1),tempCount);
+            else
+            {
+                Console.WriteLine("player {0} can have {1} pieces allow to move", Math.Abs(PlayerXMadelastMoved - 1), tempCount);
                 return false;
             }
 
@@ -63,9 +65,16 @@ namespace ChessForm
             if (selectedPlayer == 0)
             {
                 Player0MovesCount++;
+                dem = 1;
+                WhiteTurn.Visible = true;
+                BlackTurn.Visible = false;
             }
-            else {
+            else
+            {
                 Player1MovesCount++;
+                dem = 0;
+                WhiteTurn.Visible = false;
+                BlackTurn.Visible = true;
             }
             Console.WriteLine("player 1 moves count: {0} | player 0 moves count: {1}", Player1MovesCount, Player0MovesCount);
             Console.WriteLine("last moved was made by player {0}", PlayerXMadelastMoved);
@@ -154,7 +163,7 @@ namespace ChessForm
                         butt.Image = null;
                         butt.Tag = null;
                     }
-                    this.coordinates.SetToolTip(butt,String.Format("({0},{1})", x, y));
+                    this.coordinates.SetToolTip(butt, String.Format("({0},{1})", x, y));
 
                 }
             }
@@ -173,9 +182,10 @@ namespace ChessForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult dlg = MessageBox.Show("Are you want to surrender ?","Sure?",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if(dlg == DialogResult.Yes)
+            DialogResult dlg = MessageBox.Show("Are you want to surrender ?", "Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlg == DialogResult.Yes)
             {
+                MessageBox.Show($"Player {PlayerXMadelastMoved} Win!");
                 this.Close();
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Opening.wav");
                 player.PlayLooping();
@@ -202,6 +212,8 @@ namespace ChessForm
                 }
             }
             DrawPiece(chessboard);
+            WhiteTurn.Visible = true;
+            BlackTurn.Visible = false;
         }
 
         //Event Handler for button click
@@ -217,12 +229,12 @@ namespace ChessForm
             if (!(butt.Tag is ChessPiece))
             {
                 attacksAvailable = false;
-                if (selectedPlayer >-1)
+                if (selectedPlayer > -1)
                 {
-                    playerMoved =chessboard.ActionPiece(selectedPiece.x, selectedPiece.y, pos.Column , pos.Row );
+                    playerMoved = chessboard.ActionPiece(selectedPiece.x, selectedPiece.y, pos.Column, pos.Row);
                     if (playerMoved)
                     {
-                        System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory +"/Resources/Wav/Move.wav");
+                        System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Move.wav");
                         player.Play();
                         CountPlayerMoved();
                     }
@@ -233,7 +245,7 @@ namespace ChessForm
                 return;
             }
             ChessPiece chessPiece = (ChessPiece)butt.Tag;
-            Console.WriteLine("({2}, {3}) - {0} from player {1}", chessPiece.GetType(), chessPiece.Player, pos.Column , pos.Row );
+            Console.WriteLine("({2}, {3}) - {0} from player {1}", chessPiece.GetType(), chessPiece.Player, pos.Column, pos.Row);
 
             //player player turn
             if (Player1MovesCount == Player0MovesCount)
@@ -243,7 +255,7 @@ namespace ChessForm
                         if (attacksAvailable)
                             break;
                         if (!attacksAvailable && PlayerXMadelastMoved == 1)
-                        { 
+                        {
                             Console.WriteLine("not player 1 turn"); return;
                         }
                         break;
@@ -258,7 +270,7 @@ namespace ChessForm
                     default:
                         break;
                 }
-                else switch (chessPiece.Player)
+            else switch (chessPiece.Player)
                 {
                     case 1:
                         if (Player1MovesCount > Player0MovesCount && !attacksAvailable)
@@ -276,9 +288,9 @@ namespace ChessForm
                     default:
                         break;
                 }
-            if (selectedPlayer>-1 && selectedPlayer!=chessPiece.Player)
+            if (selectedPlayer > -1 && selectedPlayer != chessPiece.Player)
             {
-                playerMoved= chessboard.ActionPiece(selectedPiece.x, selectedPiece.y, pos.Column, pos.Row);
+                playerMoved = chessboard.ActionPiece(selectedPiece.x, selectedPiece.y, pos.Column, pos.Row);
                 if (playerMoved)
                 {
                     CountPlayerMoved();
@@ -292,15 +304,15 @@ namespace ChessForm
                 selectedPlayer = chessPiece.Player;
                 selectedPiece.x = pos.Column;
                 selectedPiece.y = pos.Row;
-                foreach (Chess.Point point in chessboard.PieceActions(pos.Column,pos.Row))
+                foreach (Chess.Point point in chessboard.PieceActions(pos.Column, pos.Row))
                 {
                     Button actionButton = (Button)tableLayoutPanel1.GetControlFromPosition(point.x, point.y);
                     if (actionButton.Tag is ChessPiece)
-                    { 
+                    {
                         attacksAvailable = true;
                         actionButton.BackColor = Color.Red;
                     }
-                    else actionButton.BackColor = Color.Chartreuse; 
+                    else actionButton.BackColor = Color.Chartreuse;
                     actionButton.FlatStyle = FlatStyle.Standard;
                     Console.WriteLine("({0}, {1})", point.x, point.y);
                 }
@@ -309,6 +321,88 @@ namespace ChessForm
             Console.WriteLine($"\battack available: {attacksAvailable}");
 
         }
-        
+
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            b.BackColor = Color.Black;
+            b.ForeColor = Color.White;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            b.BackColor = Color.Red;
+            b.ForeColor = Color.Black;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (PlayerXMadelastMoved == 0)
+            {
+                TimeWhite();
+            }
+            else if (PlayerXMadelastMoved == 1)
+            {
+                TimeBlack();
+            }
+            //else
+            //{
+            //    if (dem == 1)
+            //    {
+            //        TimeWhite();
+            //    }
+            //    else if (dem == 0)
+            //    {
+            //        TimeBlack();
+            //    }
+            //}
+        }
+
+        private void TimeWhite()
+        {
+            if (WhiteTimeS.Text == "00" || WhiteTimeS.Text == "0")
+            {
+                if (WhiteTimeM.Text == "00" || WhiteTimeM.Text == "0")
+                {
+                    
+                    MessageBox.Show("Out of the Time!", "End 15 minutes.", MessageBoxButtons.OK);
+                    this.Close();
+                }
+                else
+                {
+                    WhiteTimeM.Text = Convert.ToString(Convert.ToInt32(WhiteTimeM.Text) - 1);
+                    WhiteTimeS.Text = "59";
+                }
+            }
+            else
+            {
+                WhiteTimeS.Text = Convert.ToString(Convert.ToInt32(WhiteTimeS.Text) - 1);
+            }
+        }
+
+        private void TimeBlack()
+        {
+            if (BlackTimeS.Text == "00" || BlackTimeS.Text == "0")
+            {
+                if (BlackTimeM.Text == "00" || BlackTimeM.Text == "0")
+                {
+                   
+                    MessageBox.Show("Out of the Time!", "End 60 minutes.", MessageBoxButtons.OK);
+                    this.Close();
+                }
+                else
+                {
+                    BlackTimeM.Text = Convert.ToString(Convert.ToInt32(BlackTimeM.Text) - 1);
+                    BlackTimeS.Text = "59";
+                }
+            }
+            else
+            {
+                BlackTimeS.Text = Convert.ToString(Convert.ToInt32(BlackTimeS.Text) - 1);
+            }
+        }
     }
+
+
 }
