@@ -1,2 +1,2 @@
-# Chess-Project-for-IT007
+# Chess-Project-for-IT008
 IT008 project
