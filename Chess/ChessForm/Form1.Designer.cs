@@ -50,6 +50,17 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.BlackTurn = new System.Windows.Forms.PictureBox();
+            this.WhiteTurn = new System.Windows.Forms.PictureBox();
+            this.BlackTimeM = new System.Windows.Forms.TextBox();
+            this.BlackTimeS = new System.Windows.Forms.TextBox();
+            this.WhiteTimeS = new System.Windows.Forms.TextBox();
+            this.WhiteTimeM = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.BlackTurn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WhiteTurn)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -305,16 +316,126 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Font = new System.Drawing.Font("Agency FB", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(909, 324);
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Agency FB", 19.8F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Strikeout))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(903, 324);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(183, 70);
+            this.button1.Size = new System.Drawing.Size(196, 79);
             this.button1.TabIndex = 18;
             this.button1.Text = "Surrender";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+            this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Black;
+            this.label17.Font = new System.Drawing.Font("MV Boli", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label17.Location = new System.Drawing.Point(884, 44);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(215, 44);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "Black Player";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.White;
+            this.label18.Font = new System.Drawing.Font("MV Boli", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(884, 642);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(231, 44);
+            this.label18.TabIndex = 20;
+            this.label18.Text = "White Player";
+            // 
+            // BlackTurn
+            // 
+            this.BlackTurn.BackColor = System.Drawing.Color.Transparent;
+            this.BlackTurn.BackgroundImage = global::ChessForm.Properties.Resources.ikoni_scrollup;
+            this.BlackTurn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BlackTurn.Location = new System.Drawing.Point(966, 262);
+            this.BlackTurn.Name = "BlackTurn";
+            this.BlackTurn.Size = new System.Drawing.Size(62, 56);
+            this.BlackTurn.TabIndex = 21;
+            this.BlackTurn.TabStop = false;
+            // 
+            // WhiteTurn
+            // 
+            this.WhiteTurn.BackColor = System.Drawing.Color.Transparent;
+            this.WhiteTurn.BackgroundImage = global::ChessForm.Properties.Resources.ikoni_scrollup2;
+            this.WhiteTurn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.WhiteTurn.Location = new System.Drawing.Point(966, 409);
+            this.WhiteTurn.Name = "WhiteTurn";
+            this.WhiteTurn.Size = new System.Drawing.Size(62, 55);
+            this.WhiteTurn.TabIndex = 22;
+            this.WhiteTurn.TabStop = false;
+            // 
+            // BlackTimeM
+            // 
+            this.BlackTimeM.BackColor = System.Drawing.Color.Black;
+            this.BlackTimeM.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BlackTimeM.ForeColor = System.Drawing.Color.White;
+            this.BlackTimeM.Location = new System.Drawing.Point(903, 128);
+            this.BlackTimeM.Multiline = true;
+            this.BlackTimeM.Name = "BlackTimeM";
+            this.BlackTimeM.ReadOnly = true;
+            this.BlackTimeM.Size = new System.Drawing.Size(101, 64);
+            this.BlackTimeM.TabIndex = 25;
+            this.BlackTimeM.Text = "60";
+            this.BlackTimeM.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // BlackTimeS
+            // 
+            this.BlackTimeS.BackColor = System.Drawing.Color.White;
+            this.BlackTimeS.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BlackTimeS.ForeColor = System.Drawing.Color.Black;
+            this.BlackTimeS.Location = new System.Drawing.Point(996, 152);
+            this.BlackTimeS.Multiline = true;
+            this.BlackTimeS.Name = "BlackTimeS";
+            this.BlackTimeS.ReadOnly = true;
+            this.BlackTimeS.Size = new System.Drawing.Size(94, 64);
+            this.BlackTimeS.TabIndex = 26;
+            this.BlackTimeS.Text = "00";
+            this.BlackTimeS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // WhiteTimeS
+            // 
+            this.WhiteTimeS.BackColor = System.Drawing.Color.Black;
+            this.WhiteTimeS.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WhiteTimeS.ForeColor = System.Drawing.Color.White;
+            this.WhiteTimeS.Location = new System.Drawing.Point(996, 536);
+            this.WhiteTimeS.Multiline = true;
+            this.WhiteTimeS.Name = "WhiteTimeS";
+            this.WhiteTimeS.ReadOnly = true;
+            this.WhiteTimeS.Size = new System.Drawing.Size(94, 64);
+            this.WhiteTimeS.TabIndex = 28;
+            this.WhiteTimeS.Text = "00";
+            this.WhiteTimeS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // WhiteTimeM
+            // 
+            this.WhiteTimeM.BackColor = System.Drawing.Color.White;
+            this.WhiteTimeM.Font = new System.Drawing.Font("Nirmala UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WhiteTimeM.ForeColor = System.Drawing.Color.Black;
+            this.WhiteTimeM.Location = new System.Drawing.Point(903, 512);
+            this.WhiteTimeM.Multiline = true;
+            this.WhiteTimeM.Name = "WhiteTimeM";
+            this.WhiteTimeM.ReadOnly = true;
+            this.WhiteTimeM.Size = new System.Drawing.Size(101, 64);
+            this.WhiteTimeM.TabIndex = 27;
+            this.WhiteTimeM.Text = "60";
+            this.WhiteTimeM.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -323,6 +444,15 @@
             this.BackgroundImage = global::ChessForm.Properties.Resources.wp5313510;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1216, 709);
+            this.ControlBox = false;
+            this.Controls.Add(this.WhiteTimeS);
+            this.Controls.Add(this.WhiteTimeM);
+            this.Controls.Add(this.BlackTimeS);
+            this.Controls.Add(this.BlackTimeM);
+            this.Controls.Add(this.WhiteTurn);
+            this.Controls.Add(this.BlackTurn);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
@@ -346,8 +476,11 @@
             this.MaximumSize = new System.Drawing.Size(1234, 756);
             this.MinimumSize = new System.Drawing.Size(1234, 756);
             this.Name = "Form1";
-            this.Text = "Practice";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Versus Human";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.BlackTurn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WhiteTurn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,6 +507,15 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.PictureBox BlackTurn;
+        private System.Windows.Forms.PictureBox WhiteTurn;
+        private System.Windows.Forms.TextBox BlackTimeM;
+        private System.Windows.Forms.TextBox BlackTimeS;
+        private System.Windows.Forms.TextBox WhiteTimeS;
+        private System.Windows.Forms.TextBox WhiteTimeM;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

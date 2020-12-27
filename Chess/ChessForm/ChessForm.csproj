@@ -64,12 +64,6 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="PawnPromotionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PawnPromotionForm.Designer.cs">
-      <DependentUpon>PawnPromotionForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormWithAI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +82,12 @@
     <Compile Include="Open.Designer.cs">
       <DependentUpon>Open.cs</DependentUpon>
     </Compile>
+    <Compile Include="PawnPromotionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PawnPromotionForm.designer.cs">
+      <DependentUpon>PawnPromotionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutForm.resx">
@@ -99,9 +99,6 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PawnPromotionForm.resx">
-      <DependentUpon>PawnPromotionForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormWithAI.resx">
       <DependentUpon>FormWithAI.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Open.resx">
       <DependentUpon>Open.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PawnPromotionForm.resx">
+      <DependentUpon>PawnPromotionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -157,6 +157,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\play-flat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YourTurn-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ikoni-scrollup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ikoni-scrollup1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ikoni-scrollup2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Queen Black 60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Queen White 60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rook Black 60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rook Black 60x601.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Knight Black 60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rook White 60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Knight White 60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bishop Black 60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bishop White 60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Youtube-Transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngfind.com-rules-png-420867.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

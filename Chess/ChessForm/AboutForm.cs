@@ -16,5 +16,10 @@ namespace ChessForm
         {
             InitializeComponent();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.uit.edu.vn");
+        }
     }
 }
