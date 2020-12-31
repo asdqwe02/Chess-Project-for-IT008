@@ -99,13 +99,13 @@ namespace ChessForm
                 for (int y = 0; y < Board.GetLength(1); y++)
                 {
                     //pawn Promotion
-                    if (Board[x, y] != null && Board[x, y].GetType().ToString() == "Chess.Pawn" && PlayerXMadelastMoved != 1)
+                    if (Board[x, y] != null && Board[x, y].GetType().ToString() == "Chess.Pawn")
                     {
                         switch (Board[x, y].Player)
                         {
                             case 0:
                                 if (y == 7)
-                                    PawnPromotion(chessboard, x, y);
+                                    Board.Pawn_Promotion(x, y, "Queen");
                                 break;
                             case 1:
                                 if (y == 0)
@@ -174,7 +174,8 @@ namespace ChessForm
                 {
                     System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Eat.wav");
                     player.Play();
-                    MessageBox.Show($"Check Mate Player {Math.Abs(PlayerXMadelastMoved - 1)}", "CHECK MATE!!!");
+                    timer1.Stop();
+                    MessageBox.Show($"Check Mate Player {Math.Abs(PlayerXMadelastMoved - 1)} \n Time played : {TimeM.Text} Minutes and {TimeS.Text} Seconds.", "CHECK MATE!!!");
                     this.Close();
                     System.Media.SoundPlayer player1 = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Opening.wav");
                     player1.PlayLooping();
@@ -212,7 +213,8 @@ namespace ChessForm
             if (dlg == DialogResult.Yes)
             {
                 this.Close();
-                MessageBox.Show("Bob Win!");
+                timer1.Stop();
+                MessageBox.Show($"Bob Win! \n Time played : {TimeM.Text} Minutes and {TimeS.Text} Seconds.");
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Opening.wav");
                 player.PlayLooping();
             }
@@ -431,6 +433,7 @@ namespace ChessForm
                 }
             }
         }
+
         private void NewButton_Click(object sender, EventArgs e)
         {
             DialogResult dlg = MessageBox.Show("Are you really want to start a New Game?", "Warning", MessageBoxButtons.YesNo);

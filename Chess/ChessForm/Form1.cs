@@ -172,6 +172,7 @@ namespace ChessForm
                 {
                     System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Eat.wav");
                     player.Play();
+                    timer1.Stop();
                     MessageBox.Show($"Check Mate Player {Math.Abs(PlayerXMadelastMoved - 1)}", "CHECK MATE!!!");
                     this.Close();
                     System.Media.SoundPlayer player1 = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Opening.wav");
@@ -366,7 +367,7 @@ namespace ChessForm
                 if (WhiteTimeM.Text == "00" || WhiteTimeM.Text == "0")
                 {
                     
-                    MessageBox.Show("Out of the Time!", "End 15 minutes.", MessageBoxButtons.OK);
+                    MessageBox.Show("Out of the Time!", "End 60 minutes.", MessageBoxButtons.OK);
                     this.Close();
                 }
                 else
