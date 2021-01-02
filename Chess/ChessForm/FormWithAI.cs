@@ -234,6 +234,8 @@ namespace ChessForm
                     if (Board[x, y] != null && Board[x, y].Player != 1 && Board.PieceActions(x, y).Count() != 0)
                     {
                         count++;
+                        if (count > 12)
+                            break;
                     }
                 }
             }
@@ -277,6 +279,8 @@ namespace ChessForm
                             second_Attack_Check = 0;
                         }
                         index++;
+                        if (index > 12)
+                            break;
                     }
                 }
             }
