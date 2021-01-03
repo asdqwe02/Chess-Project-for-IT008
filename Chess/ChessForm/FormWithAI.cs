@@ -99,13 +99,13 @@ namespace ChessForm
                 for (int y = 0; y < Board.GetLength(1); y++)
                 {
                     //pawn Promotion
-                    if (Board[x, y] != null && Board[x, y].GetType().ToString() == "Chess.Pawn" && PlayerXMadelastMoved != 1)
+                    if (Board[x, y] != null && Board[x, y].GetType().ToString() == "Chess.Pawn")
                     {
                         switch (Board[x, y].Player)
                         {
                             case 0:
                                 if (y == 7)
-                                    PawnPromotion(chessboard, x, y);
+                                    Board.Pawn_Promotion(x, y, "Queen");
                                 break;
                             case 1:
                                 if (y == 0)
@@ -174,7 +174,8 @@ namespace ChessForm
                 {
                     System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Eat.wav");
                     player.Play();
-                    MessageBox.Show($"Check Mate Player {Math.Abs(PlayerXMadelastMoved - 1)}", "CHECK MATE!!!");
+                    timer1.Stop();
+                    MessageBox.Show($"Check Mate Player {Math.Abs(PlayerXMadelastMoved - 1)} \n Time played : {TimeM.Text} Minutes and {TimeS.Text} Seconds.", "CHECK MATE!!!");
                     this.Close();
                     System.Media.SoundPlayer player1 = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Opening.wav");
                     player1.PlayLooping();
@@ -212,7 +213,8 @@ namespace ChessForm
             if (dlg == DialogResult.Yes)
             {
                 this.Close();
-                MessageBox.Show("Bob Win!");
+                timer1.Stop();
+                MessageBox.Show($"Bob Win! \n Time played : {TimeM.Text} Minutes and {TimeS.Text} Seconds.");
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(AppDomain.CurrentDomain.BaseDirectory + "/Resources/Wav/Opening.wav");
                 player.PlayLooping();
             }
@@ -229,9 +231,12 @@ namespace ChessForm
             {
                 for (int y = 0; y < Board.GetLength(1); y++)
                 {
-                    if (Board[x, y] != null && Board[x, y].Player != 1 && Board.PieceActions(x, y).Count() != 0)
+                    if (Board[x, y] != null && Board[x, y].Player != 1) //put another if here to see if it counter StackOverflow Error ? note: this doens't work but did recude the rate the Error occur
                     {
-                        count++;
+                        if ( Board.PieceActions(x, y).Count() != 0)
+                            count++;
+                        if (count > 12)// break to counter StackOverFlow Error ? note: this doens't work but did recude the rate the Error occur
+                            break;
                     }
                 }
             }
@@ -247,34 +252,40 @@ namespace ChessForm
             {
                 for (int y = 0; y < Board.GetLength(1); y++)
                 {
-                    if (Board[x, y] != null && Board[x, y].Player != 1 && Board.PieceActions(x, y).Count() != 0)
+                    if (Board[x, y] != null && Board[x, y].Player != 1 )
                     {
                         //get Bob[Index] move count
-                        int countTemp = 0;
-                        Bob[index].AI_Moves_p = new Chess.Point[Board.PieceActions(x, y).Count()];
-                        Bob[index].AI_pos = new Chess.Point(x, y); // index is out of range error need to be fix 
-                        AI_Moves Temp_Bob = new AI_Moves();
-                        Temp_Bob.AI_pos = new Chess.Point(x, y);
-                        Temp_Bob.AI_Moves_pa = new List<Chess.Point>();
-                        foreach (Chess.Point point in chessboard.PieceActions(x, y))
+                        int PACTemp = Board.PieceActions(x, y).Count();
+                        if (PACTemp != 0) //put another if here to see if it counter StackOverflow Error ?  note: this doens't work but did recude the rate the Error occur
                         {
-                            Button actionButton = (Button)tableLayoutPanel1.GetControlFromPosition(point.x, point.y);
-                            if (actionButton.Tag is ChessPiece)
+                            int countTemp = 0;
+                            Bob[index].AI_Moves_p = new Chess.Point[PACTemp];
+                            Bob[index].AI_pos = new Chess.Point(x, y); 
+                            AI_Moves Temp_Bob = new AI_Moves();
+                            Temp_Bob.AI_pos = new Chess.Point(x, y);
+                            Temp_Bob.AI_Moves_pa = new List<Chess.Point>();
+                            foreach (Chess.Point point in chessboard.PieceActions(x, y))
                             {
-                                second_Attack_Check = 1;
-                                attacksAvailable = true;
-                                Chess.Point pa_Temp = new Chess.Point(point.x, point.y);
-                                Temp_Bob.AI_Moves_pa.Add(pa_Temp);
+                                Button actionButton = (Button)tableLayoutPanel1.GetControlFromPosition(point.x, point.y);
+                                if (actionButton.Tag is ChessPiece)
+                                {
+                                    second_Attack_Check = 1;
+                                    attacksAvailable = true;
+                                    Chess.Point pa_Temp = new Chess.Point(point.x, point.y);
+                                    Temp_Bob.AI_Moves_pa.Add(pa_Temp);
+                                }
+                                Bob[index].AI_Moves_p[countTemp] = point;
+                                countTemp++;
                             }
-                            Bob[index].AI_Moves_p[countTemp] = point;
-                            countTemp++;
+                            if (second_Attack_Check != 0)
+                            {
+                                Aggressive_Bob.Add(Temp_Bob);
+                                second_Attack_Check = 0;
+                            }
+                            index++;
                         }
-                        if (second_Attack_Check != 0)
-                        {
-                            Aggressive_Bob.Add(Temp_Bob);
-                            second_Attack_Check = 0;
-                        }
-                        index++;
+                        if (index > 12) // break to counter StackOverFlow Error ? note: this doens't work but did recude the rate the Error occur
+                            break;
                     }
                 }
             }
@@ -431,6 +442,7 @@ namespace ChessForm
                 }
             }
         }
+
         private void NewButton_Click(object sender, EventArgs e)
         {
             DialogResult dlg = MessageBox.Show("Are you really want to start a New Game?", "Warning", MessageBoxButtons.YesNo);

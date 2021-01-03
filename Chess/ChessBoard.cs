@@ -114,7 +114,7 @@ namespace Chess
         {
             if (board == null)
                 board = this.Board;
-            bool[,] legalActions = new bool[board.GetLength(0), board.GetLength(1)];
+            //bool[,] legalActions = new bool[board.GetLength(0), board.GetLength(1)];
             List<Point> availableActions = new List<Point>();
             ChessPiece movingPiece = board[x, y];
             if (attackActions)
